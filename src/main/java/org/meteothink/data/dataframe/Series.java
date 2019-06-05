@@ -20,6 +20,7 @@ import org.meteothink.data.dataframe.impl.Views;
 import org.meteothink.data.dataframe.impl.WindowFunction;
 import org.meteothink.util.DateUtil;
 import org.meteothink.ndarray.Array;
+import org.meteothink.ndarray.InvalidRangeException;
 import org.meteothink.ndarray.Range;
 
 /**
@@ -413,6 +414,17 @@ public class Series implements Iterable {
      */
     public Object min() {
         return ArrayMath.min(data);
+    }
+    
+    /**
+     * Compute the standard deviation of the numeric columns for each group or the entire
+     * series if the data is not grouped.
+     *
+     * @return Minimum object
+     * @throws InvalidRangeException
+     */
+    public Object stdDev() throws InvalidRangeException {
+        return ArrayMath.std(data);
     }
 
     /**

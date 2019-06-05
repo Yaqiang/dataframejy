@@ -75,4 +75,14 @@ class GroupBy(object):
         else:
             return series.Series(series=r)
             
+    def std(self):
+        '''
+        Compute standard deviation of groups.
+        '''
+        r = self._groupby.median()
+        if isinstance(r, MIDataFrame):
+            return dataframe.DataFrame(dataframe=r)
+        else:
+            return series.Series(series=r)
+            
 ########################################################

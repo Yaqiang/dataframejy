@@ -397,25 +397,26 @@ public class Index<V> implements Iterable<V>{
         Object[] rr;
         List<Integer> r1;
         List<Object> rIndex1;
+        int idx;
         for (Object l : labels){
             rr = getIndices(l);
             r1 = (ArrayList<Integer>)rr[0];
             rIndex1 = (ArrayList<Object>)rr[1];
             if (r1.isEmpty()){
-                rData.add(0);
+                rData.add(-1);
                 rrIndex.add(l);
             } else {
                 r.addAll(r1);
                 rIndex.addAll(rIndex1);
                 for (Iterator<Integer> it = r1.iterator(); it.hasNext();) {
-                    it.next();
-                    rData.add(1);
+                    idx = it.next();
+                    rData.add(idx);
                     rrIndex.add(l);
                 }
             }
         }
-        
-        return new Object[]{r, rIndex, rData, rrIndex};
+
+         return new Object[]{r, rIndex, rData, rrIndex};
     }
     
     /**
